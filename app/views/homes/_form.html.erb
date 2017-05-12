@@ -1,22 +1,50 @@
-<%= form_for(home) do |f| %>
+<%= form_for(home, :html => { :name => "myForm" , :id=> "myForm"}) do |f| %>
   <% if home.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(home.errors.count, "error") %> prohibited this home from being saved:</h2>
-
       <ul>
-      <% home.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% home.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
-
   <div class="field">
     <%= f.label :name %>
-    <%= f.text_field :name %>
+    <%= f.text_field :name ,class: 'form-control required lettersonly', name: "home[name]", minlength: 2%>
   </div>
-
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+
+<script>
+  var forms = document.forms;
+  console.log(forms);
+  for(var i=0;i<forms.length;i++)
+  {
+    var f= document.forms[i].getElementsByTagName("input");
+    console.log(f);
+    forms[i].addEventListener('submit', function(evt){
+    evt.preventDefault();
+    var xhttp = new XMLHttpRequest();
+    var url = "/";
+    xhttp.open("POST", url, true);
+    var params = { count: 2 };
+    xhttp.send("1");
+    // xhttp.onreadystatechange = function() {
+    //   if (xhttp.readyState == 4 && xhttp.status == 200) {
+    //     alert("fd");
+    //   }
+    // };
+    // (this).submit();
+    alert("form submitted");
+      });
+  }
+  //  function loadData() {   
+  // }
+  // $('.placement-get-quote').on('click', function() {
+  //   loadData();
+  // });
+
+</script>`
