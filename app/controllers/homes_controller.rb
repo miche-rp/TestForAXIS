@@ -7,6 +7,9 @@ class HomesController < ApplicationController
     @homes = Home.all
   end
 
+  def co_reg
+
+  end
   # GET /homes/1
   # GET /homes/1.json
   def show
