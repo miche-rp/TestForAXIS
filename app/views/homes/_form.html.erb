@@ -23,7 +23,7 @@ function getURLParameter(ad_token) {
   return decodeURIComponent((new RegExp('[?|&]' + ad_token + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [null, ''])[1].replace(/\+/g, '%20')) || null;
 }
 param = getURLParameter('ad_token');
-alert("http://localhost:3000/api/v1/ad_serve/1/lead_track?ad_token=" + param);
+alert("https://frozen-fjord-36346.herokuapp.com/api/v1/ad_serve/13/lead_track?ad_token=" + param);
   var forms = document.forms;
   console.log(forms);
   for(var i=0;i<forms.length;i++)
@@ -33,7 +33,7 @@ alert("http://localhost:3000/api/v1/ad_serve/1/lead_track?ad_token=" + param);
     forms[i].addEventListener('submit', function(evt){
     evt.preventDefault();
     var xhttp = new XMLHttpRequest();
-    var url = "http://localhost:3000/api/v1/ad_serve/1/lead_track?ad_token=" + param ;
+    var url = "https://frozen-fjord-36346.herokuapp.com/api/v1/ad_serve/13/lead_track?ad_token=" + param ;
     xhttp.open("GET", url, true);
     xhttp.send(param);
     // xhttp.onreadystatechange = function() {
