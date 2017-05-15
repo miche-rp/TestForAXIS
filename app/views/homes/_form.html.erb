@@ -18,6 +18,7 @@
   </div>
 <% end %>
 
+
 <script>
 function getURLParameter(ad_token) {
   return decodeURIComponent((new RegExp('[?|&]' + ad_token + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [null, ''])[1].replace(/\+/g, '%20')) || null;
@@ -36,6 +37,8 @@ alert("https://frozen-fjord-36346.herokuapp.com/api/v1/ad_serve/12/lead_track?ad
     var url = "https://frozen-fjord-36346.herokuapp.com/api/v1/ad_serve/12/lead_track?ad_token=" + param ;
     xhttp.open("GET", url, true);
     xhttp.send(param);
+
+
     // xhttp.onreadystatechange = function() {
     //   if (xhttp.readyState == 4 && xhttp.status == 200) {
     //     alert("fd");
@@ -43,6 +46,7 @@ alert("https://frozen-fjord-36346.herokuapp.com/api/v1/ad_serve/12/lead_track?ad
     // };
     // (this).submit();
     alert("form submitted");
+
       });
   }
   //  function loadData() {   
@@ -51,4 +55,5 @@ alert("https://frozen-fjord-36346.herokuapp.com/api/v1/ad_serve/12/lead_track?ad
   //   loadData();
   // });
 
-</script>`
+</script>
+
