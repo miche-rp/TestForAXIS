@@ -31,6 +31,10 @@
   {
     var f= document.forms[i].getElementsByTagName("input");
     console.log(f);
+//     forms[i].bind("ajax:complete",function()
+//     {
+// alert("form submitted");
+//     });
     forms[i].addEventListener('submit', function(evt){
       //  evt.preventDefault();
       var xhttp = new XMLHttpRequest();
@@ -43,7 +47,7 @@
       //   }
       // };
       // (this).submit();
-      alert("form submitted");
+      // alert("form submitted");
     });
   }
   //  function loadData() {   
