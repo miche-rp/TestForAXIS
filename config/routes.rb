@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'coreg/index'
+
   root 'homes#index'
   resources :homes do
     collection do
