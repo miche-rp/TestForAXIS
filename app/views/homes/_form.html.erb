@@ -24,37 +24,27 @@
     return decodeURIComponent((new RegExp('[?|&]' + ad_token + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [null, ''])[1].replace(/\+/g, '%20')) || null;
   }
   param = getURLParameter('ad_token');
-  // alert("http://localhost:3000/api/v1/ad_serve/12/lead_track?ad_token=" + param);
   var forms = document.forms;
-  console.log(forms);
   for(var i=0;i<forms.length;i++)
   {
-    var f= document.forms[i].getElementsByTagName("input");
-    console.log(f);
-//     forms[i].bind("ajax:complete",function()
-//     {
-// alert("form submitted");
-//     });
-    forms[i].addEventListener('submit', function(evt){
-      //  evt.preventDefault();
-      var xhttp = new XMLHttpRequest();
-      var url = "https://frozen-fjord-36346.herokuapp.com/api/v1/ad_serve/12/lead_track?ad_token=" + param ;
-      xhttp.open("GET", url, true);
-      xhttp.send(param);
-      // xhttp.onreadystatechange = function() {
-      //   if (xhttp.readyState == 4 && xhttp.status == 200) {
-      //     alert("fd");
-      //   }
-      // };
-      // (this).submit();
-      // alert("form submitted");
-    });
+    var f = document.forms[i].getElementsByTagName("input");
+    var flag = 0;
+    for (var j=0; j<f.length; j++) {
+      if (f[j].type.toLowerCase() === "password") 
+      {
+        flag = 1;
+        break;
+      } 
+    }
+    if(flag == 0){
+      console.log("no passwrd field")
+      forms[i].addEventListener('submit', function(evt){
+        var xhttp = new XMLHttpRequest();
+        var url = "https://frozen-fjord-36346.herokuapp.com/api/v1/ad_serve/12/lead_track?ad_token=" + param ;
+        xhttp.open("GET", url, true);
+        xhttp.send(param);
+      });
+    }
   }
-  //  function loadData() {   
-  // }
-  // $('.placement-get-quote').on('click', function() {
-  //   loadData();
-  // });
-
 </script>
 
