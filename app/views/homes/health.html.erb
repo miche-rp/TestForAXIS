@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<h1 style="line-height:35px;">Sum0 Publisher Test Environment: Click Feed/Health Insurance</h1>
+
+<iframe src="https://frozen-fjord-36346.herokuapp.com/api/v1/ad_serve/22/click_ad" width="100%" frameborder="0" allowfullscreen scrolling="no"></iframe>
+
+
+
+<script>
+  var h= ($('iframe').contents().height() );
+  $('iframe').css({
+    'height': 6 * h
+  });
+</script>
