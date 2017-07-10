@@ -18,9 +18,8 @@
   </div>
 <% end %>
 
-
 <script>
-  function getURLParameter(ad_token) {
+   function getURLParameter(ad_token) {
     return decodeURIComponent((new RegExp('[?|&]' + ad_token + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [null, ''])[1].replace(/\+/g, '%20')) || null;
   }
   param = getURLParameter('ad_token');
@@ -30,13 +29,14 @@
     var f = document.forms[i].getElementsByTagName("input");
     var flag = 0;
     for (var j=0; j<f.length; j++) {
-      if (f[j].type.toLowerCase() === "password") 
+      if (f[j].type.toLowerCase() === "password" || f[j].type.toLowerCase() === "search" || (f[j].innerHTML.indexOf('search') > -1)) 
       {
         flag = 1;
+        console.log("search box");
         break;
-      } 
-    }
-    if(flag == 0){
+        } 
+      }
+      if(flag == 0){
       console.log("no passwrd field")
       forms[i].addEventListener('submit', function(evt){
         var xhttp = new XMLHttpRequest();
@@ -46,5 +46,12 @@
       });
     }
   }
+  if (!localStorage['done']) {
+        localStorage['done'] = 'true';
+        var xhttpreq = new XMLHttpRequest();
+        var url ="https://frozen-fjord-36346.herokuapp.com/api/v1/ad_serve/12/code_tracker" ;
+        xhttpreq.open("POST", url, true);
+        xhttpreq.send();  
+   }
 </script>
 
